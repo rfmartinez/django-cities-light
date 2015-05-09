@@ -45,8 +45,7 @@ class Geonames(object):
 
     def download(self, url, path, force=False):
         remote_file = urlopen(url)
-        remote_time = time.strptime(remote_file.headers['last-modified'],
-            '%a, %d %b %Y %H:%M:%S %Z')
+        remote_time = remote_file.headers['last-modified']
         remote_size = int(remote_file.headers['content-length'])
 
         if os.path.exists(path) and not force:
